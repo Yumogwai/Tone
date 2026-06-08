@@ -1,0 +1,16 @@
+# gitleaks config — extends the default rule set.
+#
+# Test files legitimately contain FAKE, obviously-not-real API keys (e.g.
+# "sk-secret123456789") to exercise key redaction and JSON-parsing logic. Those
+# fixtures must not trip the secret scan. Real secrets are kept out of ALL source
+# by discipline + .gitignore (no .env is committed) and nothing real ever lives in
+# a test file — so allowlisting test fixtures is safe. App source is still fully scanned.
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Ignore fake keys used as fixtures in test files"
+paths = [
+  '''.*\.test\.ts$''',
+]
