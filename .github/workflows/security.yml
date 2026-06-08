@@ -1,6 +1,10 @@
-# Secret scanning: gitleaks runs on every push + PR and fails the check if a secret
-# (API key, token, private key) was committed. The automated net for the rule:
-# keep secrets out of the repo. Wire it on every project.
+# Secret scanning: gitleaks scans the FULL git history on every push + PR and fails
+# if a secret (API key, token, private key) was ever committed. The automated net for
+# the rule: keep secrets out of the repo.
+#
+# We invoke gitleaks directly (not the marketplace action) so the scan covers the whole
+# history deterministically and does NOT depend on the push event's commit range — that
+# range breaks after a history rewrite / force-push. This way the check stays reliable.
 
 name: Security
 
@@ -17,8 +21,15 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          fetch-depth: 0          # full history so gitleaks scans all commits in the PR
-      - name: Run gitleaks
-        uses: gitleaks/gitleaks-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0          # full history so gitleaks sees every commit
+
+      - name: Install gitleaks
+        run: |
+          VERSION=8.24.3
+          curl -sSfL "https://github.com/gitleaks/gitleaks/releases/download/v${VERSION}/gitleaks_${VERSION}_linux_x64.tar.gz" \
+            | tar -xz gitleaks
+          sudo install gitleaks /usr/local/bin/gitleaks
+          gitleaks version
+
+      - name: Scan full git history for secrets
+        run: gitleaks detect --source . --redact --verbose
