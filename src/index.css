@@ -1,0 +1,11 @@
+/* ───────────────────────────────────────────────
+   Tone Design System — global entry.
+   Link THIS one file and you have the whole system:
+   tokens, base canvas, and the component class layer.
+   (This file is @import-only by contract.)
+─────────────────────────────────────────────── */
+@import "./styles/tokens/colors.css";
+@import "./styles/tokens/typography.css";
+@import "./styles/tokens/spacing.css";
+@import "./styles/base.css";
+@import "./styles/components.css";

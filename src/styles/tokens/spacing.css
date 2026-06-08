@@ -1,0 +1,43 @@
+/* ───────────────────────────────────────────────
+   Tone · Spacing, radii, elevation & motion
+   4px grid. Generous, rounded corners. Elevation
+   is soft and warm — diffuse low-contrast shadows,
+   never hard gray drops. Motion is gentle: short
+   eases and one slow "breathing" loop for waits.
+─────────────────────────────────────────────── */
+:root {
+  /* Spacing — 4px grid */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Radii — soft and rounded; nothing sharp */
+  --radius-sm:   8px;   /* ticks, micro chips        */
+  --radius:      11px;  /* options, dense buttons    */
+  --radius-md:   14px;  /* buttons, inputs           */
+  --radius-lg:   18px;  /* nodes, inner panels       */
+  --radius-xl:   22px;  /* cards, composer           */
+  --radius-2xl:  26px;  /* modals                    */
+  --radius-pill: 9999px;
+
+  /* Elevation — soft, warm, diffuse */
+  --shadow-xs:   0 1px 2px rgba(42,40,51,0.025);
+  --shadow-sm:   0 1px 2px rgba(42,40,51,0.025), 0 10px 28px -22px rgba(42,40,51,0.40);
+  --shadow-card: 0 1px 2px rgba(42,40,51,0.025), 0 18px 44px -30px rgba(42,40,51,0.22);
+  --shadow-pop:  0 40px 90px -30px rgba(42,40,51,0.50);
+  --shadow-glow: 0 6px 18px -6px var(--accent-glow);
+
+  /* Motion */
+  --ease-out:    cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 160ms;
+  --dur-base: 240ms;
+  --dur-slow: 460ms;
+}

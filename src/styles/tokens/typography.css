@@ -1,0 +1,28 @@
+/* ───────────────────────────────────────────────
+   Tone · Typography tokens
+   Display: Syne (geometric, used gently — calm,
+   not shouty). Text/UI: Outfit (humanist, airy).
+   Both are Google Fonts.
+─────────────────────────────────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --font-display: "Syne", ui-sans-serif, system-ui, sans-serif;
+  --font-sans:    "Outfit", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono:    ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Type roles — sizes kept modest; Tone favors air
+     and generous line-height over big, loud display. */
+  --h0-size:     clamp(2rem, 6vw, 4rem);     /* hero greeting        */
+  --h0-tracking: -0.03em;
+  --h1-size:     clamp(1.7rem, 4vw, 2.4rem); /* page titles          */
+  --h1-tracking: -0.025em;
+  --h2-size:     1.6rem;                      /* safe-move action     */
+  --h3-size:     1.25rem;                     /* modal / panel titles */
+  --h4-size:     1.125rem;
+  --p-size:      1rem;                        /* body, 16/1.6         */
+  --small-size:  0.875rem;                    /* 14px helper          */
+  --micro-size:  0.8125rem;                   /* 13px dense           */
+  --eyebrow-size: 0.6875rem;                  /* 11px tracked label   */
+  --tag-size:    0.625rem;                    /* 10px micro-label     */
+}

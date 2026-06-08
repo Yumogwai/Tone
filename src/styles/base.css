@@ -1,0 +1,52 @@
+/* ───────────────────────────────────────────────
+   Tone · Base — reset, page canvas, global utilities.
+   The canvas carries two barely-there radial washes
+   (periwinkle top-right, sage bottom-left) over warm
+   paper — the calm backdrop everything sits on.
+─────────────────────────────────────────────── */
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; height: 100%; }
+
+body {
+  font-family: var(--font-sans);
+  background:
+    radial-gradient(1100px 680px at 82% -12%, rgba(122,118,194,0.05), transparent 60%),
+    radial-gradient(820px 560px at 6% 110%, rgba(111,154,130,0.045), transparent 55%),
+    var(--bg-page);
+  color: var(--ink-1);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#root { height: 100%; }
+
+::selection { background: var(--accent-tint); }
+
+/* Calm scrollbars */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: var(--ink-6); border-radius: 99px; border: 3px solid transparent; background-clip: content-box; }
+::-webkit-scrollbar-thumb:hover { background: var(--ink-5); background-clip: content-box; border: 3px solid transparent; }
+
+h1, h2, h3 { color: var(--ink-1); }
+
+/* Tracked uppercase label */
+.eyebrow {
+  font-size: var(--eyebrow-size); font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent-deep); opacity: 0.85;
+}
+
+/* ── Entrance motion ────────────────────────────
+   Transform-only on purpose: the resting state is
+   fully visible, so content never depends on an
+   animation finishing (safe for print / throttled
+   tabs / reduced-motion). */
+.fade-up { animation: fadeUp 460ms var(--ease-spring) both; }
+@keyframes fadeUp { from { transform: translateY(14px); } to { transform: none; } }
+.fade-in { animation: fadeIn 360ms ease both; }
+@keyframes fadeIn { from { transform: translateY(6px); } to { transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up, .fade-in { animation: none; }
+}

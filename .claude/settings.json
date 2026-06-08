@@ -1,0 +1,19 @@
+{
+  "_comment": "Project-level Claude Code settings. The hooks keep docs/STATUS.md fresh automatically so the founder never has to ask. If a hook stops firing after a Claude Code update, re-check the current hooks schema in the docs.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          { "type": "command", "command": "node .claude/hooks/print-status.mjs" }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "node .claude/hooks/freshness-guard.mjs" }
+        ]
+      }
+    ]
+  }
+}

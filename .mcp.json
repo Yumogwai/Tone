@@ -1,0 +1,4 @@
+{
+  "_comment": "Project-scoped MCP servers for Tone. Empty by default — Tone is a client-side frontend with no backend yet, so no project-specific MCP server is required to build or run it. Add servers here as needs arise (e.g. a docs server, or a database server once a backend lands). Keys never go in this file; reference env vars.",
+  "mcpServers": {}
+}

@@ -1,0 +1,24 @@
+# Secret scanning: gitleaks runs on every push + PR and fails the check if a secret
+# (API key, token, private key) was committed. The automated net for the rule:
+# keep secrets out of the repo. Wire it on every project.
+
+name: Security
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  gitleaks:
+    name: Detect secrets
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # full history so gitleaks scans all commits in the PR
+      - name: Run gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

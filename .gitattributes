@@ -1,0 +1,18 @@
+# Normalize line endings so Git stops warning "LF will be replaced by CRLF" on Windows.
+# Text files are stored with LF in the repo; Git checks them out natively per-OS.
+* text=auto eol=lf
+
+# Force LF for files that break with CRLF.
+*.sh   text eol=lf
+*.mjs  text eol=lf
+
+# Treat these as binary (never normalize / never diff as text).
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.webp binary
+*.ico  binary
+*.pdf  binary
+*.woff binary
+*.woff2 binary

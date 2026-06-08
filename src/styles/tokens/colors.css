@@ -1,0 +1,67 @@
+/* ───────────────────────────────────────────────
+   Tone · Color tokens
+   A calm, low-stimulation, light-only palette.
+   One muted periwinkle accent, a sage support hue,
+   a warm ink ladder, and a three-stop "balance"
+   set (warm = too much · cool = too little · good).
+   All tokens live on :root — Tone has no dark mode.
+─────────────────────────────────────────────── */
+:root {
+  /* ── Surfaces — warm, breathable paper ─────── */
+  --bg-page:    #f4f2ee;   /* app canvas            */
+  --bg-page-2:  #fdfcfa;   /* raised sheets, modals */
+  --bg-page-3:  #faf8f4;   /* sunken rails, canvas  */
+  --paper:      #fdfcfa;   /* cards                 */
+  --paper-sunk: #f1efea;   /* inset wells           */
+
+  /* ── Accent — muted periwinkle (never electric) */
+  --accent:        #7a76c2;
+  --accent-soft:   #948fd2;            /* gradient top    */
+  --accent-deep:   #615ca6;            /* text on tint    */
+  --accent-tint:   rgba(122,118,194,0.10);  /* selected fill   */
+  --accent-tint-2: rgba(122,118,194,0.05);  /* hover wash      */
+  --accent-line:   rgba(122,118,194,0.20);  /* hover border    */
+  --accent-glow:   rgba(122,118,194,0.20);  /* soft halo       */
+
+  /* ── Ink ladder — soft warm charcoal ───────── */
+  --ink-1: #2a2833;   /* headings, primary text  */
+  --ink-2: #433f4d;   /* body strong             */
+  --ink-3: #635f6e;   /* body                    */
+  --ink-4: #8c8794;   /* secondary / muted       */
+  --ink-5: #b0acb6;   /* captions, placeholder   */
+  --ink-6: #d3cfd7;   /* hairline ticks, dimmest */
+
+  /* ── Hairlines ─────────────────────────────── */
+  --hair:      rgba(42,40,51,0.07);
+  --hair-soft: rgba(42,40,51,0.045);
+
+  /* ── Sage — reassurance / "safe" support hue ── */
+  --sage:      #6f9a82;
+  --sage-bg:   rgba(111,154,130,0.10);
+  --sage-line: rgba(111,154,130,0.22);
+
+  /* ── Balance set — the signature risk axis ──── */
+  --calm-good:    #6f9a82;                  /* the recommended move */
+  --calm-good-bg: rgba(111,154,130,0.10);
+  --calm-warm:    #c1925d;                  /* "if you overdo it"   */
+  --calm-warm-bg: rgba(193,146,93,0.10);
+  --calm-cool:    #6a8fa8;                  /* "if you do nothing"  */
+  --calm-cool-bg: rgba(106,143,168,0.10);
+
+  /* ── Danger — a calm rose, used sparingly ───── */
+  --danger-500: #d4707f;
+  --danger-bd:  rgba(212,112,127,0.25);
+  --danger-bg:  rgba(212,112,127,0.10);
+
+  /* ── Compatibility aliases (semantic foreground/
+        fill names some surfaces still reference) ── */
+  --fg-1:  var(--ink-1);
+  --fg-90: rgba(42,40,51,0.90);
+  --fg-60: var(--ink-3);
+  --fg-40: var(--ink-4);
+  --fg-30: var(--ink-5);
+  --fill-3:   rgba(42,40,51,0.03);
+  --border-2: rgba(42,40,51,0.06);
+  --brand-500:        var(--accent);
+  --brand-indigo-600: var(--accent-deep);
+}

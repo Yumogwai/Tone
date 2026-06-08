@@ -1,0 +1,38 @@
+# The build + test gate. Runs on every PR into main and on push to main.
+# A red check + branch protection means a broken build never reaches main.
+# Vite + React + TypeScript — no backend, so no env placeholders needed.
+# NOTE: GitHub Actions versions move — bump if a step warns it's deprecated.
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Build
+        run: npm run build

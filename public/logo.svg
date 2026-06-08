@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Tone">
+  <defs>
+    <linearGradient id="toneMark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#948fd2"></stop>
+      <stop offset="1" stop-color="#615ca6"></stop>
+    </linearGradient>
+  </defs>
+  <rect width="48" height="48" rx="14" fill="url(#toneMark)"></rect>
+  <g transform="translate(12 12)" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="10"></circle>
+    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+  </g>
+</svg>
