@@ -14,7 +14,7 @@ interface Props {
   onBack: () => void
   onAgain: () => void
   onAddTeams: (names: string[]) => void
-  onRefine: (comment: string) => void
+  onRefine: (comment: string) => void | Promise<void>
   backLabel: string
 }
 
@@ -25,15 +25,16 @@ export function AnswerView({ entry, org, onBack, onAgain, onAddTeams, onRefine, 
     (n) => !org.teams.some((t) => t.name.toLowerCase() === n.toLowerCase()),
   )
 
-  const send = () => {
+  const send = async () => {
     const c = comment.trim()
     if (!c || refining) return
     setComment('')
     setRefining(true)
-    setTimeout(() => {
-      onRefine(c)
+    try {
+      await onRefine(c)
+    } finally {
       setRefining(false)
-    }, 1000)
+    }
   }
 
   return (
@@ -48,7 +49,7 @@ export function AnswerView({ entry, org, onBack, onAgain, onAddTeams, onRefine, 
 
       {entry.thread.map((m, i) =>
         m.role === 'advice' ? (
-          <AdviceCard key={i} answer={m.answer} revised={i > 0} />
+          <AdviceCard key={i} answer={m.answer} revised={i > 0} source={m.source} note={m.note} />
         ) : (
           <div className="you-note fade-up" key={i}>
             <span className="yn-ic">

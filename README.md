@@ -38,8 +38,11 @@ npm run dev        # http://localhost:5173
 
 ## Notes
 
-- The "intelligence" is currently a hand-authored scenario engine (`src/lib/scenarios.ts`). The
-  AI/RAG backend is parked for later — that file is the single swap point; the UI and types stay the same.
+- **Intelligence is hybrid.** By default Tone uses a calm, hand-authored scenario engine
+  (`src/lib/scenarios.ts`) — no setup, no key, nothing leaves the browser. Add your own
+  Gemini / OpenAI / Anthropic key under **"Your AI"** (`src/lib/ai/`) and Tone uses the real model
+  instead, calling the provider directly from your browser — the key only ever lives in your
+  browser's storage. A hosted / RAG backend is still a future step.
 - No deployment is set up yet (not needed at this stage). The build output in `dist/` is a static site
   that can be hosted for free (GitHub Pages / Vercel / Netlify) whenever you want.
 

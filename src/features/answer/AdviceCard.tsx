@@ -20,9 +20,11 @@ function renderTemplate(text: string) {
 interface Props {
   answer: Advice
   revised: boolean
+  source?: 'ai' | 'canned'
+  note?: string
 }
 
-export function AdviceCard({ answer, revised }: Props) {
+export function AdviceCard({ answer, revised, source, note }: Props) {
   const [copied, setCopied] = useState(false)
   const a = answer
   const copy = () => {
@@ -32,17 +34,25 @@ export function AdviceCard({ answer, revised }: Props) {
   }
   return (
     <div className="safe-card card fade-up">
-      <span className={'safe-tag' + (revised ? ' revised' : '')}>
-        {revised ? (
-          <>
-            <I.refresh size={13} /> Reconsidered
-          </>
-        ) : (
-          <>
-            <I.shield size={13} /> Safe move
-          </>
+      <div className="safe-head">
+        <span className={'safe-tag' + (revised ? ' revised' : '')}>
+          {revised ? (
+            <>
+              <I.refresh size={13} /> Reconsidered
+            </>
+          ) : (
+            <>
+              <I.shield size={13} /> Safe move
+            </>
+          )}
+        </span>
+        {source === 'ai' && (
+          <span className="safe-source">
+            <I.sparkle size={12} /> your AI
+          </span>
         )}
-      </span>
+      </div>
+      {note && <div className="ai-note">{note}</div>}
       {a.revisedNote && <div className="revised-note">{a.revisedNote}</div>}
       <h2 className="safe-action">{a.action}</h2>
       <p className="safe-why">{a.why}</p>

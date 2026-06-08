@@ -22,7 +22,7 @@ colleague" tone.
 | State | React local state + `localStorage` | `src/lib/storage.ts` |
 | Database | none (localStorage only) | |
 | Auth | none | |
-| AI | none yet — a canned scenario engine (`src/lib/scenarios.ts`); real LLM/RAG parked | swap point is `scenarios.ts` |
+| AI | Optional **BYOK** — user's own Gemini / OpenAI / Anthropic key, called client-side (`src/lib/ai/`); calm canned engine (`src/lib/scenarios.ts`) is the no-key default + fallback | RAG/server still parked |
 | Payments | none | |
 | Monitoring | none | |
 | Hosting | none yet — GitHub repo only; deploy is a later, free step | static `dist/` builds anywhere |
@@ -38,12 +38,14 @@ src/
   index.css           # design-system entry (@imports tokens + base + components)
   styles/             # the Tone design system (tokens/, base.css, components.css)
   lib/                # icons, avatars, scenarios, org helpers, storage, history, types
-  components/         # small shared UI (Thinking, ReadingStrip)
+    ai/               # BYOK: settings, providers (Gemini/OpenAI/Anthropic), advisor (+canned fallback)
+  components/         # small shared UI (Thinking, ReadingStrip, ErrorBoundary)
   features/
     ask/              # Home + InlineClarify (the Claude-Code-style centerpiece)
     answer/           # AnswerView + AdviceCard (safe move, tilt meter, risks, rethink)
     company/          # CompanyTab (org tree, personas, modals, structure dropdown)
     history/          # History
+    settings/         # SettingsView — the "Your AI" (bring-your-own-key) screen
   test/               # vitest setup
 docs/                 # all project documentation (Markdown)
 public/               # static assets (logo.svg)
@@ -120,5 +122,8 @@ done, and what's next** live in `docs/STATUS.md`.
 <!-- Grow this section over time, or via dedicated skills (security, i18n, etc.).
      Keep the core above lightweight. -->
 
-- The scenario "intelligence" is canned (`src/lib/scenarios.ts`). When the real model/RAG backend
-  lands, that file is the swap point — the UI and types stay the same.
+- Intelligence is **hybrid**: a calm **canned** engine (`src/lib/scenarios.ts`) is the zero-setup
+  default, and an optional **bring-your-own-key** path (`src/lib/ai/`) calls the user's chosen LLM
+  directly from the browser. The key lives only in `localStorage` and is never sent anywhere but the
+  provider. Everything resolves to the same `Advice` shape, so the UI never changes — a future
+  RAG/server backend would slot in behind the same interface.

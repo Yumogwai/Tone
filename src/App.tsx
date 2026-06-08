@@ -11,15 +11,18 @@ import { I } from './lib/icons'
 import { LS, load, save } from './lib/storage'
 import { uid } from './lib/org'
 import { lastAdvice } from './lib/history'
-import { refineAnswer } from './lib/scenarios'
 import type { ClarifyAnswers, HistoryEntry, Org, Scenario } from './lib/types'
+import { loadAiSettings, saveAiSettings, isAiConfigured } from './lib/ai/settings'
+import type { AiSettings } from './lib/ai/settings'
+import { generateAdvice, rethinkAdvice } from './lib/ai/advisor'
 import { Home } from './features/ask/Home'
 import { AnswerView } from './features/answer/AnswerView'
 import { History } from './features/history/History'
 import { CompanyTab } from './features/company/CompanyTab'
+import { SettingsView } from './features/settings/SettingsView'
 import { Thinking } from './components/Thinking'
 
-type Screen = 'home' | 'thinking' | 'answer' | 'company' | 'history'
+type Screen = 'home' | 'thinking' | 'answer' | 'company' | 'history' | 'settings'
 type AnswerFrom = 'home' | 'history'
 
 export default function App() {
@@ -29,6 +32,7 @@ export default function App() {
   const [thinkText, setThinkText] = useState('')
   const [current, setCurrent] = useState<HistoryEntry | null>(null)
   const [answerFrom, setAnswerFrom] = useState<AnswerFrom>('home')
+  const [ai, setAi] = useState<AiSettings>(() => loadAiSettings())
 
   useEffect(() => {
     save(LS.hist, history)
@@ -36,35 +40,40 @@ export default function App() {
   useEffect(() => {
     save(LS.org, org)
   }, [org])
+  useEffect(() => {
+    saveAiSettings(ai)
+  }, [ai])
 
-  const generate = (question: string, scenario: Scenario, answers: ClarifyAnswers) => {
-    setThinkText('Finding the safe move…')
+  const generate = async (question: string, scenario: Scenario, answers: ClarifyAnswers) => {
+    setThinkText(isAiConfigured(ai) ? 'Thinking it through with your AI…' : 'Finding the safe move…')
     setScreen('thinking')
-    setTimeout(() => {
-      const answer = scenario.build(answers, { org })
-      const entry: HistoryEntry = {
-        id: 'e' + Date.now(),
-        ts: Date.now(),
-        question,
-        scenarioId: scenario.id,
-        answers,
-        thread: [{ role: 'advice', answer }],
-      }
-      setHistory((h) => [entry, ...h])
-      setCurrent(entry)
-      setAnswerFrom('home')
-      setScreen('answer')
-    }, 950)
+    const { advice, source, note } = await generateAdvice({ question, answers, scenario, org }, ai)
+    const entry: HistoryEntry = {
+      id: 'e' + Date.now(),
+      ts: Date.now(),
+      question,
+      scenarioId: scenario.id,
+      answers,
+      thread: [{ role: 'advice', answer: advice, source, note }],
+    }
+    setHistory((h) => [entry, ...h])
+    setCurrent(entry)
+    setAnswerFrom('home')
+    setScreen('answer')
   }
 
-  const refine = (comment: string) => {
+  const refine = async (comment: string) => {
     if (!current) return
     const prev = lastAdvice(current)
     if (!prev) return
-    const refined = refineAnswer(prev, comment)
+    const { advice, source, note } = await rethinkAdvice({ question: current.question, prev, comment }, ai)
     const updated: HistoryEntry = {
       ...current,
-      thread: [...current.thread, { role: 'you', text: comment }, { role: 'advice', answer: refined }],
+      thread: [
+        ...current.thread,
+        { role: 'you', text: comment },
+        { role: 'advice', answer: advice, source, note },
+      ],
     }
     setCurrent(updated)
     setHistory((h) => h.map((e) => (e.id === updated.id ? updated : e)))
@@ -104,6 +113,7 @@ export default function App() {
     )
   else if (screen === 'company') body = <CompanyTab org={org} setOrg={setOrg} />
   else if (screen === 'history') body = <History items={history} onOpen={openHistoryItem} />
+  else if (screen === 'settings') body = <SettingsView settings={ai} onChange={setAi} />
   else body = <Home onGenerate={generate} />
 
   const peopleCount = org.people.length
@@ -136,6 +146,13 @@ export default function App() {
           </span>{' '}
           History
           {history.length > 0 && <span className="nav-count">{history.length}</span>}
+        </button>
+        <button className={'nav-item' + (navActive('settings') ? ' active' : '')} onClick={() => setScreen('settings')}>
+          <span className="ic">
+            <I.sliders size={19} />
+          </span>{' '}
+          Your AI
+          {isAiConfigured(ai) && <span className="nav-dot" title="Your AI is on" />}
         </button>
 
         <div className="rail-foot">

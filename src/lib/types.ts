@@ -64,7 +64,7 @@ export interface Org {
 /* ── History ── */
 
 export type ThreadItem =
-  | { role: 'advice'; answer: Advice }
+  | { role: 'advice'; answer: Advice; source?: 'ai' | 'canned'; note?: string }
   | { role: 'you'; text: string }
 
 export interface HistoryEntry {

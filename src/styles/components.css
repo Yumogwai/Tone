@@ -585,3 +585,38 @@
 .error-fallback p {
   font-size: 15px; color: var(--ink-4); margin: 0 0 22px; max-width: 42ch; line-height: 1.55;
 }
+
+/* ── AI source tag + fallback note (advice card) ── */
+.safe-head { display: flex; align-items: center; gap: 9px; margin-bottom: 16px; flex-wrap: wrap; }
+.safe-head .safe-tag { margin-bottom: 0; }
+.safe-source { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-deep); }
+.ai-note { font-size: 13px; color: var(--calm-warm); background: var(--calm-warm-bg);
+  border: 1px solid rgba(193,146,93,0.25); border-radius: 12px; padding: 10px 13px; margin-bottom: 14px; line-height: 1.45; }
+
+/* ── Settings ("Your AI") ───────────────────── */
+.nav-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--sage); margin-left: auto; flex-shrink: 0; }
+.settings-card { padding: 22px 24px; margin-top: 18px; }
+.ai-toggle { display: flex; align-items: flex-start; gap: 13px; cursor: pointer; }
+.ai-toggle .switch { width: 42px; height: 24px; border-radius: 99px; background: var(--ink-6);
+  position: relative; transition: background 160ms var(--ease-out); flex-shrink: 0; margin-top: 1px; }
+.ai-toggle .switch.on { background: var(--accent); }
+.ai-toggle .switch::after { content: ""; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px;
+  border-radius: 50%; background: #fff; transition: left 180ms var(--ease-spring); box-shadow: 0 1px 3px rgba(42,40,51,0.3); }
+.ai-toggle .switch.on::after { left: 21px; }
+.ai-toggle .tg-label b { font-size: 15px; color: var(--ink-1); font-weight: 600; display: block; margin-bottom: 2px; }
+.ai-toggle .tg-label span { font-size: 13px; color: var(--ink-4); line-height: 1.45; }
+.ai-config { margin-top: 8px; border-top: 1px solid var(--hair-soft); padding-top: 2px; }
+.free-tag { margin-left: 7px; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--sage); background: var(--sage-bg); border-radius: 99px; padding: 2px 7px; }
+.prov-blurb { font-size: 12.5px; color: var(--ink-5); margin: 9px 0 0; line-height: 1.45; }
+.key-link { font-size: 12.5px; font-weight: 600; color: var(--accent-deep); text-decoration: none; margin-left: 8px; }
+.key-link:hover { text-decoration: underline; }
+.key-row { display: flex; gap: 8px; align-items: center; }
+.key-row .soft-input { flex: 1; min-width: 0; }
+.ai-status { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; padding: 10px 13px;
+  border-radius: 12px; margin-top: 12px; line-height: 1.45; }
+.ai-status.ok { color: var(--calm-good); background: var(--calm-good-bg); }
+.ai-status.err { color: var(--danger-500); background: var(--danger-bg); }
+.disclosure { display: flex; align-items: flex-start; font-size: 12.5px; color: var(--ink-4);
+  line-height: 1.5; margin: 18px 0 0; padding-top: 16px; border-top: 1px solid var(--hair-soft); }

@@ -3,8 +3,12 @@
 > Keep this separate from shipped reality. Nothing here is built yet.
 
 ## Backend / AI
-- Replace the canned scenario engine (`src/lib/scenarios.ts`) with a real model call (RAG over the
-  user's accumulated context). The UI and types stay the same — `scenarios.ts` is the only swap point.
+- ✅ **Client-side BYOK done** — users can plug in their own Gemini/OpenAI/Anthropic key (`src/lib/ai/`)
+  and get real model answers; the canned engine is the no-key default + fallback.
+- Optional **hosted backend** so the model works with no key at all (e.g. a small Gemini-free-tier proxy
+  with rate limiting) — for the non-technical users who won't bring a key.
+- Replace/augment with **RAG over the user's accumulated context** (the "RAG as per-user storage" idea).
+  `src/lib/ai/advisor.ts` is the seam — the UI and the `Advice` shape stay the same.
 - Per-user context store (the "RAG as per-user storage" idea from the design brief).
 - Expand persona "character" notes into individualized advice wording (data is already captured).
 - Detect specific *people* (not only teams) from the chat and offer to add them to the map.
