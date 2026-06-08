@@ -15,7 +15,7 @@ jobs:
     name: Detect secrets
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0          # full history so gitleaks scans all commits in the PR
       - name: Run gitleaks

@@ -4,8 +4,10 @@
 > now*. Safe to edit as often as needed — it does NOT live in the cached prompt header. A Stop hook
 > reminds Claude to keep this fresh whenever code changes (`.claude/hooks/freshness-guard.mjs`).
 
-**Current phase:** Design implemented · build + test green · GitHub-ready (not deployed)
+**Current phase:** Live on GitHub (private) · CI green · branch-protected · not deployed
 **Last updated:** 2026-06-08
+
+> Repo: https://github.com/Beablod/tone (private). `main` requires a PR + passing CI + gitleaks.
 
 ## ✅ Done
 - Scaffolded Vite + React 18 + TypeScript (strict) project, client-side only.
