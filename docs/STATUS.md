@@ -25,6 +25,9 @@
   implementer/reviewer agents, `.github/workflows` (CI + gitleaks), `.gitignore`/`.gitattributes`/
   `.env.example`/`.mcp.json`.
 - Unit tests (scenario engine) + a render smoke test (Vitest + Testing Library).
+- Pre-public hardening: MIT `LICENSE`, **self-hosted fonts** (no Google-CDN call / no IP leak),
+  an in-UI privacy note, a top-level error boundary, OG/social + theme-color meta, and the personal
+  email scrubbed from all git history (commits now use a GitHub noreply address).
 
 ## 🔨 In progress
 - (nothing active)

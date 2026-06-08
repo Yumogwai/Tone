@@ -2,10 +2,10 @@
    Tone · Typography tokens
    Display: Syne (geometric, used gently — calm,
    not shouty). Text/UI: Outfit (humanist, airy).
-   Both are Google Fonts.
+   Both are self-hosted via @fontsource (imported in
+   main.tsx) — no third-party font-CDN call, so no
+   user IP leaks to Google. Privacy-first by default.
 ─────────────────────────────────────────────── */
-@import url("https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap");
-
 :root {
   --font-display: "Syne", ui-sans-serif, system-ui, sans-serif;
   --font-sans:    "Outfit", ui-sans-serif, system-ui, -apple-system, sans-serif;

@@ -51,4 +51,4 @@ gh repo create tone --private --source=. --remote=origin --push
 
 ## License
 
-Private / unpublished.
+[MIT](LICENSE) © 2026 Andrii Kuratov

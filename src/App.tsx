@@ -145,6 +145,7 @@ export default function App() {
             </span>
             <p>Anxiety is normal. Take a breath. No one here is rushing you or keeping score.</p>
           </div>
+          <p className="rail-privacy">Private by design — your questions and company map stay on this device.</p>
         </div>
       </aside>
 

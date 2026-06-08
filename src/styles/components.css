@@ -569,3 +569,19 @@
 .dd-name { font-size: 14px; font-weight: 600; color: var(--ink-1); }
 .dd-desc { font-size: 12.5px; color: var(--ink-5); }
 .dd-check { margin-left: auto; color: var(--accent-deep); }
+
+/* ── Privacy note (foot of the rail) ────────── */
+.rail-privacy { margin: 10px 6px 0; font-size: 11px; line-height: 1.45; color: var(--ink-5); }
+
+/* ── Error boundary fallback ────────────────── */
+.error-fallback {
+  min-height: 100%; display: grid; place-items: center; align-content: center;
+  text-align: center; padding: 40px 24px;
+}
+.error-fallback h1 {
+  font-family: var(--font-display); font-weight: 800; font-size: 26px;
+  letter-spacing: -0.02em; color: var(--ink-1); margin: 18px 0 8px;
+}
+.error-fallback p {
+  font-size: 15px; color: var(--ink-4); margin: 0 0 22px; max-width: 42ch; line-height: 1.55;
+}
