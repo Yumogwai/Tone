@@ -4,10 +4,14 @@
 > now*. Safe to edit as often as needed — it does NOT live in the cached prompt header. A Stop hook
 > reminds Claude to keep this fresh whenever code changes (`.claude/hooks/freshness-guard.mjs`).
 
-**Current phase:** Live on GitHub (private) · CI green · branch-protected · not deployed
+**Current phase:** Live on GitHub (private) · CI + gitleaks green on every push · not deployed
 **Last updated:** 2026-06-08
 
-> Repo: https://github.com/Beablod/tone (private). `main` requires a PR + passing CI + gitleaks.
+> Repo: https://github.com/Beablod/tone (private). CI (lint+typecheck+test+build) and gitleaks
+> secret-scanning run on every push/PR and are passing.
+> **Enforced** branch protection on `main` is NOT on yet — GitHub's free tier blocks branch
+> protection / rulesets on private repos (needs GitHub Pro, or making the repo public). Deferred as
+> a clear choice — see docs/PLANS.md. The checks still run; they're just not a hard merge gate.
 
 ## ✅ Done
 - Scaffolded Vite + React 18 + TypeScript (strict) project, client-side only.

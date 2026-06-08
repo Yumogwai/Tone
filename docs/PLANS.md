@@ -14,7 +14,9 @@
 - Accounts + sync (so history/map aren't tied to one browser's localStorage).
 - Let the user reference a specific person directly inside the inline clarify panel.
 
-## Ops (when ready — all free tiers)
-- Push to GitHub (`gh repo create`), turn on branch protection requiring CI + gitleaks.
-- Deploy the static build (GitHub Pages / Vercel / Netlify).
+## Ops (when ready)
+- ✅ Pushed to GitHub: https://github.com/Beablod/tone (private). CI + gitleaks run on every push.
+- **Enforced branch protection on `main`** — requires GitHub Pro (paid) on a private repo, OR making
+  the repo public (free). Until then the checks run but aren't a hard merge gate. Decide later.
+- Deploy the static build (GitHub Pages / Vercel / Netlify — all free).
 - Analytics once there's a public URL.
