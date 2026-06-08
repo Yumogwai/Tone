@@ -16,7 +16,8 @@
 
 ## Ops (when ready)
 - ✅ Pushed to GitHub: https://github.com/Beablod/tone (private). CI + gitleaks run on every push.
-- **Enforced branch protection on `main`** — requires GitHub Pro (paid) on a private repo, OR making
-  the repo public (free). Until then the checks run but aren't a hard merge gate. Decide later.
+- **Go public + enable branch protection** — planned for when the product is genuinely ready. The
+  switch to public is the trigger: branch protection on `main` (require PR + passing CI + gitleaks) is
+  free once the repo is public, so enable it in the same step. Staying private until then.
 - Deploy the static build (GitHub Pages / Vercel / Netlify — all free).
 - Analytics once there's a public URL.

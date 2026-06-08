@@ -9,9 +9,10 @@
 
 > Repo: https://github.com/Beablod/tone (private). CI (lint+typecheck+test+build) and gitleaks
 > secret-scanning run on every push/PR and are passing.
-> **Enforced** branch protection on `main` is NOT on yet — GitHub's free tier blocks branch
-> protection / rulesets on private repos (needs GitHub Pro, or making the repo public). Deferred as
-> a clear choice — see docs/PLANS.md. The checks still run; they're just not a hard merge gate.
+> **Decision (2026-06-08):** stay **private** while building; flip to **public** only once the product
+> is genuinely ready — and enable branch protection on `main` at that point (it's free once the repo is
+> public). Until then CI + gitleaks run on every push but are not an enforced merge gate. (GitHub's
+> free tier blocks branch protection on *private* repos.)
 
 ## ✅ Done
 - Scaffolded Vite + React 18 + TypeScript (strict) project, client-side only.
