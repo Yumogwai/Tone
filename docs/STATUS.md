@@ -12,8 +12,9 @@
 > **Branch ruleset on `main` created (2026-06-12), enforcement being finalized:** a test direct push
 > still landed afterwards, so the ruleset isn't blocking yet — re-check in Settings → Rules: Enforcement
 > status = Active, target = default branch, plus the "Require a pull request" and "Require status
-> checks" (ci, Detect secrets) boxes. Dependabot alerts are active. Also worth enabling:
-> secret-scanning **push protection** (free).
+> checks" (ci, Detect secrets) boxes. Advanced Security (verified 2026-06-12): Dependabot alerts,
+> security updates, malware alerts, secret scanning and **push protection** are all enabled. Optional
+> remaining toggle: **CodeQL** code scanning (Set up → Default).
 
 ## ✅ Done
 - Scaffolded Vite + React 18 + TypeScript (strict) project, client-side only.
@@ -51,7 +52,8 @@
 - (nothing active)
 
 ## ⏭️ Next
-- Optional: enable secret-scanning **push protection** (Settings → Advanced Security) — free.
+- Optional: set up **CodeQL** code scanning (Settings → Advanced Security → Code scanning → Set up →
+  Default) — free static analysis on every push.
 - Optional: deploy the static `dist/` (GitHub Pages / Vercel / Netlify — all free).
 - Product follow-ups: see `docs/PLANS.md`.
 
