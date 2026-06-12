@@ -39,6 +39,10 @@
   would need a history rewrite); docs point at the public address; the implementer/reviewer sub-agents
   moved from Opus to **Sonnet** (cheaper); BYOK Anthropic default replaced — `claude-3-5-haiku-latest`
   was retired by Anthropic in Feb 2026 — with `claude-haiku-4-5` (their cheapest current model).
+- **Dev-toolchain security bump (2026-06-12):** right after going public, Dependabot flagged dev-only
+  vulnerabilities (1 critical, in vitest); production deps were clean. Upgraded Vite 5→8, Vitest 2→4,
+  plugin-react 4→6 — `npm audit` now reports 0 vulnerabilities; 30/30 tests + build green on the new
+  toolchain.
 
 ## 🔨 In progress
 - (nothing active)
