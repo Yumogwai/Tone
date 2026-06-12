@@ -9,11 +9,9 @@
 
 > Repo: https://github.com/Yumogwai/tone (public). CI (lint+typecheck+test+build) and gitleaks
 > secret-scanning run on every push/PR and are passing.
-> **Update (2026-06-12):** the repo is now **public**. A security pass on going public found no leaks —
-> full git history clean of secrets and of the personal email; BYOK keys only ever go to the official
-> provider endpoints. Branch protection on `main` is now free but **not yet enabled** — flip it on in
-> GitHub Settings (block force-pushes + require the CI and Security checks), and enable the free
-> Dependabot alerts + secret-scanning push protection while there.
+> **Branch protection on `main` is ENABLED (2026-06-12):** changes land only via pull request with the
+> required checks (ci + Detect secrets) green; force-pushes and branch deletion are blocked. Dependabot
+> alerts are active. Still worth flipping on in Settings: secret-scanning **push protection** (free).
 
 ## ✅ Done
 - Scaffolded Vite + React 18 + TypeScript (strict) project, client-side only.
@@ -43,13 +41,15 @@
   vulnerabilities (1 critical, in vitest); production deps were clean. Upgraded Vite 5→8, Vitest 2→4,
   plugin-react 4→6 — `npm audit` now reports 0 vulnerabilities; 30/30 tests + build green on the new
   toolchain.
+- **Went public + security pass (2026-06-12):** full git history verified clean of secrets and of the
+  personal email; BYOK keys only ever go to the official provider endpoints. Founder enabled a branch
+  ruleset on `main`: PR-only, required checks, no force-pushes.
 
 ## 🔨 In progress
 - (nothing active)
 
 ## ⏭️ Next
-- Enable branch protection on `main` + the free security toggles (Dependabot alerts, secret-scanning
-  push protection) — a few clicks in GitHub Settings.
+- Optional: enable secret-scanning **push protection** (Settings → Advanced Security) — free.
 - Optional: deploy the static `dist/` (GitHub Pages / Vercel / Netlify — all free).
 - Product follow-ups: see `docs/PLANS.md`.
 
