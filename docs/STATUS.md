@@ -9,9 +9,11 @@
 
 > Repo: https://github.com/Yumogwai/tone (public). CI (lint+typecheck+test+build) and gitleaks
 > secret-scanning run on every push/PR and are passing.
-> **Branch protection on `main` is ENABLED (2026-06-12):** changes land only via pull request with the
-> required checks (ci + Detect secrets) green; force-pushes and branch deletion are blocked. Dependabot
-> alerts are active. Still worth flipping on in Settings: secret-scanning **push protection** (free).
+> **Branch ruleset on `main` created (2026-06-12), enforcement being finalized:** a test direct push
+> still landed afterwards, so the ruleset isn't blocking yet — re-check in Settings → Rules: Enforcement
+> status = Active, target = default branch, plus the "Require a pull request" and "Require status
+> checks" (ci, Detect secrets) boxes. Dependabot alerts are active. Also worth enabling:
+> secret-scanning **push protection** (free).
 
 ## ✅ Done
 - Scaffolded Vite + React 18 + TypeScript (strict) project, client-side only.
@@ -42,8 +44,8 @@
   plugin-react 4→6 — `npm audit` now reports 0 vulnerabilities; 30/30 tests + build green on the new
   toolchain.
 - **Went public + security pass (2026-06-12):** full git history verified clean of secrets and of the
-  personal email; BYOK keys only ever go to the official provider endpoints. Founder enabled a branch
-  ruleset on `main`: PR-only, required checks, no force-pushes.
+  personal email; BYOK keys only ever go to the official provider endpoints. Founder created a branch
+  ruleset on `main` (enforcement being finalized — see the note above).
 
 ## 🔨 In progress
 - (nothing active)
