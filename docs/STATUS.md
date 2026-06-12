@@ -9,12 +9,10 @@
 
 > Repo: https://github.com/Yumogwai/tone (public). CI (lint+typecheck+test+build) and gitleaks
 > secret-scanning run on every push/PR and are passing.
-> **Branch ruleset on `main` created (2026-06-12), enforcement being finalized:** a test direct push
-> still landed afterwards, so the ruleset isn't blocking yet — re-check in Settings → Rules: Enforcement
-> status = Active, target = default branch, plus the "Require a pull request" and "Require status
-> checks" (ci, Detect secrets) boxes. Advanced Security (verified 2026-06-12): Dependabot alerts,
-> security updates, malware alerts, secret scanning and **push protection** are all enabled. Optional
-> remaining toggle: **CodeQL** code scanning (Set up → Default).
+> **Branch protection on `main` is ACTIVE and verified (2026-06-12):** a test direct push was rejected —
+> changes land only via pull request with the required checks green; force-pushes and branch deletion
+> are blocked. Advanced Security: Dependabot alerts, security updates, malware alerts, secret scanning,
+> **push protection** and **CodeQL** code scanning are all enabled. Security setup is complete.
 
 ## ✅ Done
 - Scaffolded Vite + React 18 + TypeScript (strict) project, client-side only.
@@ -45,15 +43,13 @@
   plugin-react 4→6 — `npm audit` now reports 0 vulnerabilities; 30/30 tests + build green on the new
   toolchain.
 - **Went public + security pass (2026-06-12):** full git history verified clean of secrets and of the
-  personal email; BYOK keys only ever go to the official provider endpoints. Founder created a branch
-  ruleset on `main` (enforcement being finalized — see the note above).
+  personal email; BYOK keys only ever go to the official provider endpoints. Founder enabled the branch
+  ruleset on `main` (Active — verified by a rejected direct push) and CodeQL code scanning.
 
 ## 🔨 In progress
 - (nothing active)
 
 ## ⏭️ Next
-- Optional: set up **CodeQL** code scanning (Settings → Advanced Security → Code scanning → Set up →
-  Default) — free static analysis on every push.
 - Optional: deploy the static `dist/` (GitHub Pages / Vercel / Netlify — all free).
 - Product follow-ups: see `docs/PLANS.md`.
 
