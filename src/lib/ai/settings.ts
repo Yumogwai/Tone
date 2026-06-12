@@ -45,7 +45,7 @@ export const PROVIDERS: Record<AiProviderId, ProviderMeta> = {
   anthropic: {
     id: 'anthropic',
     name: 'Anthropic Claude',
-    defaultModel: 'claude-3-5-haiku-latest',
+    defaultModel: 'claude-haiku-4-5',
     keyUrl: 'https://console.anthropic.com/settings/keys',
     keyPlaceholder: 'sk-ant-…',
     free: false,

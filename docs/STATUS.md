@@ -4,15 +4,16 @@
 > now*. Safe to edit as often as needed — it does NOT live in the cached prompt header. A Stop hook
 > reminds Claude to keep this fresh whenever code changes (`.claude/hooks/freshness-guard.mjs`).
 
-**Current phase:** Hybrid AI shipped (BYOK + canned fallback) · CI + gitleaks green · private on GitHub · not deployed
-**Last updated:** 2026-06-08
+**Current phase:** Hybrid AI shipped (BYOK + canned fallback) · CI + gitleaks green · public on GitHub · not deployed
+**Last updated:** 2026-06-12
 
-> Repo: https://github.com/Beablod/tone (private). CI (lint+typecheck+test+build) and gitleaks
+> Repo: https://github.com/Yumogwai/tone (public). CI (lint+typecheck+test+build) and gitleaks
 > secret-scanning run on every push/PR and are passing.
-> **Decision (2026-06-08):** stay **private** while building; flip to **public** only once the product
-> is genuinely ready — and enable branch protection on `main` at that point (it's free once the repo is
-> public). Until then CI + gitleaks run on every push but are not an enforced merge gate. (GitHub's
-> free tier blocks branch protection on *private* repos.)
+> **Update (2026-06-12):** the repo is now **public**. A security pass on going public found no leaks —
+> full git history clean of secrets and of the personal email; BYOK keys only ever go to the official
+> provider endpoints. Branch protection on `main` is now free but **not yet enabled** — flip it on in
+> GitHub Settings (block force-pushes + require the CI and Security checks), and enable the free
+> Dependabot alerts + secret-scanning push protection while there.
 
 ## ✅ Done
 - Scaffolded Vite + React 18 + TypeScript (strict) project, client-side only.
@@ -33,12 +34,18 @@
   provider, never through us. When set, Tone uses the real model for the safe move + the rethink;
   otherwise the calm canned engine runs. Graceful fallback on any error, the key is redacted from error
   text, reviewer-approved (APPROVE WITH NITS, nits fixed). Lives in `src/lib/ai/`. 30 tests green.
+- **Public-release pass (2026-06-12):** repo public at github.com/Yumogwai/tone; LICENSE/README switched
+  from the real name to the **Yumogwai** pseudonym (the name still exists in older commits — full removal
+  would need a history rewrite); docs point at the public address; the implementer/reviewer sub-agents
+  moved from Opus to **Sonnet** (cheaper); BYOK Anthropic default replaced — `claude-3-5-haiku-latest`
+  was retired by Anthropic in Feb 2026 — with `claude-haiku-4-5` (their cheapest current model).
 
 ## 🔨 In progress
 - (nothing active)
 
 ## ⏭️ Next
-- Push to a GitHub repo (free) when ready — `gh repo create`.
+- Enable branch protection on `main` + the free security toggles (Dependabot alerts, secret-scanning
+  push protection) — a few clicks in GitHub Settings.
 - Optional: deploy the static `dist/` (GitHub Pages / Vercel / Netlify — all free).
 - Product follow-ups: see `docs/PLANS.md`.
 

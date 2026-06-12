@@ -46,12 +46,11 @@ npm run dev        # http://localhost:5173
 - No deployment is set up yet (not needed at this stage). The build output in `dist/` is a static site
   that can be hosted for free (GitHub Pages / Vercel / Netlify) whenever you want.
 
-## Push to GitHub
+## Repository
 
-```bash
-gh repo create tone --private --source=. --remote=origin --push
-```
+https://github.com/Yumogwai/tone — CI (lint + typecheck + tests + build) and gitleaks secret
+scanning run on every push.
 
 ## License
 
-[MIT](LICENSE) © 2026 Andrii Kuratov
+[MIT](LICENSE) © 2026 Yumogwai

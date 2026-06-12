@@ -2,7 +2,7 @@
 name: reviewer
 description: MUST be used after code changes to review for bugs, security vulnerabilities, and convention violations. Use after implementer completes work, and proactively when changes touch data or user input. Read-only — never modifies code.
 tools: Read, Glob, Grep
-model: opus
+model: sonnet
 ---
 
 # Reviewer

@@ -69,7 +69,7 @@ describe('chat — OpenAI', () => {
 describe('chat — Anthropic', () => {
   it('sets the api-key + browser-access headers and a user message', async () => {
     stubFetch({ content: [{ text: '{"ok":1}' }] })
-    const out = await chat('sys', 'usr', base({ provider: 'anthropic', apiKey: 'sk-ant', model: 'claude-3-5-haiku-latest' }))
+    const out = await chat('sys', 'usr', base({ provider: 'anthropic', apiKey: 'sk-ant', model: 'claude-haiku-4-5' }))
     expect(out).toBe('{"ok":1}')
     expect(lastUrl).toBe('https://api.anthropic.com/v1/messages')
     expect(headers()['x-api-key']).toBe('sk-ant')
