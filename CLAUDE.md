@@ -127,3 +127,15 @@ done, and what's next** live in `docs/STATUS.md`.
   directly from the browser. The key lives only in `localStorage` and is never sent anywhere but the
   provider. Everything resolves to the same `Advice` shape, so the UI never changes — a future
   RAG/server backend would slot in behind the same interface.
+
+## Self-learning (bake lessons into the structure)
+
+This project keeps a running lessons file — `docs/LESSONS.md` (some projects use `docs/PLAYBOOK.md`) —
+holding the accumulated do's, don'ts, and gotchas we've already paid for.
+
+- **Read it before non-trivial work here.** Don't relearn a lesson we already have.
+- **After any substantial change or fix, append the lesson**: what we tried, what failed, the rule now.
+- **Prefer enforcement over reminders.** Where a lesson can become a check/gate, add it — the way EasyEMI
+  turned its YMYL fact-check into `tools/validate.mjs`. A checked invariant beats a sentence in a doc.
+
+The root `_system/daily/` log is the chronological "what we did"; this file is the durable "what we know now."
