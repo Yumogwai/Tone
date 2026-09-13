@@ -2,7 +2,7 @@
 name: implementer
 description: MUST be used for all code changes — features, bug fixes, refactors, config edits. Writes production code AND verifies its own work (lint, typecheck, tests, build). Use when a task requires editing files. For 1–2 line changes the orchestrator may work directly instead.
 tools: Read, Write, Edit, Bash, Glob, Grep, WebFetch
-model: opus
+model: sonnet
 ---
 
 # Implementer

@@ -19,9 +19,9 @@
 - Let the user reference a specific person directly inside the inline clarify panel.
 
 ## Ops (when ready)
-- ✅ Pushed to GitHub: https://github.com/Beablod/tone (private). CI + gitleaks run on every push.
-- **Go public + enable branch protection** — planned for when the product is genuinely ready. The
-  switch to public is the trigger: branch protection on `main` (require PR + passing CI + gitleaks) is
-  free once the repo is public, so enable it in the same step. Staying private until then.
+- ✅ Pushed to GitHub: https://github.com/Yumogwai/tone — **public** since 2026-06-12. CI + gitleaks run
+  on every push.
+- ✅ Went public. ⏳ **Branch protection on `main`** is now free but still to enable in GitHub Settings
+  (block force-pushes + require the CI and Security checks).
 - Deploy the static build (GitHub Pages / Vercel / Netlify — all free).
 - Analytics once there's a public URL.

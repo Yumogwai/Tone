@@ -4,15 +4,15 @@
 > now*. Safe to edit as often as needed — it does NOT live in the cached prompt header. A Stop hook
 > reminds Claude to keep this fresh whenever code changes (`.claude/hooks/freshness-guard.mjs`).
 
-**Current phase:** Hybrid AI shipped (BYOK + canned fallback) · CI + gitleaks green · private on GitHub · not deployed
-**Last updated:** 2026-06-08
+**Current phase:** Hybrid AI shipped (BYOK + canned fallback) · CI + gitleaks green · public on GitHub · not deployed
+**Last updated:** 2026-06-12
 
-> Repo: https://github.com/Beablod/tone (private). CI (lint+typecheck+test+build) and gitleaks
+> Repo: https://github.com/Yumogwai/tone (public). CI (lint+typecheck+test+build) and gitleaks
 > secret-scanning run on every push/PR and are passing.
-> **Decision (2026-06-08):** stay **private** while building; flip to **public** only once the product
-> is genuinely ready — and enable branch protection on `main` at that point (it's free once the repo is
-> public). Until then CI + gitleaks run on every push but are not an enforced merge gate. (GitHub's
-> free tier blocks branch protection on *private* repos.)
+> **Branch protection on `main` is ACTIVE and verified (2026-06-12):** a test direct push was rejected —
+> changes land only via pull request with the required checks green; force-pushes and branch deletion
+> are blocked. Advanced Security: Dependabot alerts, security updates, malware alerts, secret scanning,
+> **push protection** and **CodeQL** code scanning are all enabled. Security setup is complete.
 
 ## ✅ Done
 - Scaffolded Vite + React 18 + TypeScript (strict) project, client-side only.
@@ -33,12 +33,23 @@
   provider, never through us. When set, Tone uses the real model for the safe move + the rethink;
   otherwise the calm canned engine runs. Graceful fallback on any error, the key is redacted from error
   text, reviewer-approved (APPROVE WITH NITS, nits fixed). Lives in `src/lib/ai/`. 30 tests green.
+- **Public-release pass (2026-06-12):** repo public at github.com/Yumogwai/tone; LICENSE/README switched
+  from the real name to the **Yumogwai** pseudonym (the name still exists in older commits — full removal
+  would need a history rewrite); docs point at the public address; the implementer/reviewer sub-agents
+  moved from Opus to **Sonnet** (cheaper); BYOK Anthropic default replaced — `claude-3-5-haiku-latest`
+  was retired by Anthropic in Feb 2026 — with `claude-haiku-4-5` (their cheapest current model).
+- **Dev-toolchain security bump (2026-06-12):** right after going public, Dependabot flagged dev-only
+  vulnerabilities (1 critical, in vitest); production deps were clean. Upgraded Vite 5→8, Vitest 2→4,
+  plugin-react 4→6 — `npm audit` now reports 0 vulnerabilities; 30/30 tests + build green on the new
+  toolchain.
+- **Went public + security pass (2026-06-12):** full git history verified clean of secrets and of the
+  personal email; BYOK keys only ever go to the official provider endpoints. Founder enabled the branch
+  ruleset on `main` (Active — verified by a rejected direct push) and CodeQL code scanning.
 
 ## 🔨 In progress
 - (nothing active)
 
 ## ⏭️ Next
-- Push to a GitHub repo (free) when ready — `gh repo create`.
 - Optional: deploy the static `dist/` (GitHub Pages / Vercel / Netlify — all free).
 - Product follow-ups: see `docs/PLANS.md`.
 
